@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+<p>Messages: </p>
+
+<p>Sender: {{sender}}</p>
+<p>Receiver: {{receiver}}</p>
+
+<form method="post" action= "{% url 'send_message' pk=sender.pk %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value="Send" />
+</form>
+
+
+
+{% endblock %}

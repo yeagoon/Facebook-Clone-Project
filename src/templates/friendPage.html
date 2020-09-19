@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="col-md-4">
+        <h1>Friends</h1>
+
+        {% if friends %}
+            {% for friend in friends %}
+                <a href="{% url 'show_profile_pk' pk=friend.pk %}">
+                    <p>{{ friend }}</p>
+                </a>
+                <a href="{% url 'remove'  pk=friend.pk %}">
+                    <button class ="no_friend_btn"> Un-friend </button>
+                </a>
+
+                <a href="{% url 'message_box' pk=friend.pk %}">
+                    <button class ="send_message_btn">Send Message</button>
+                </a>
+
+            {% endfor %}
+
+        {% else %}
+        You don't have a friend yet...
+        {% endif %}
+
+    </div>
+
+{% endblock %}

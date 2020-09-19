@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+ {% if messages %}
+    {% for message in messages reversed %}
+
+    <div class="message_block" style="margin-top: 40px;">
+        <p>
+            {% if message.msg_content %} {{ message.msg_content }} {% else %}No messages sent{% endif %}
+        </p>
+
+        <p>
+            {% if message.receiver %} <i>Messages sent to {{ message.receiver }} </i> {% endif %}
+            {% if message.created_at %} <i> Sent at {{message.created_at}} </i> {% endif %}
+        </p>
+    </div>
+
+    {% endfor %}
+{% endif %}
+{% endblock %}

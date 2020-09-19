@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<style>
+        .profile_border{
+            display: block;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .profile_pic{
+            display: block;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .info_title{
+            font-size: 30px;
+        }
+        .info_block{
+            margin-top: 40px;
+            margin-left: 40px;
+        }
+        .info_content{
+            font-size: 20px;
+        }
+        .create_profile {
+            margin-top: 80px;
+            margin-left: 40px;
+        }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+{% if current_page_info.profile_image %}
+    <a> <img src = "{{ current_page_info.profile_image.url }}" height="300" width="417" /> </a>
+{% endif %}
+
+<div class="info_block">
+
+    <a class="info_title"> Info </a>
+    <div class="info_content">
+        <p>
+            Name:
+            {% if current_page_info.first_name %}  {{ current_page_info.first_name }} {% else %}_{% endif %}
+            {% if current_page_info.last_name %} {{ current_page_info.last_name }} {% else %}_{% endif %}
+        </p>
+        <p>
+            Age:
+            {% if current_page_info.age %} {{ current_page_info.age }} {% else %}_{% endif %}
+        </p>
+    </div>
+</div>
+
+
+
+<button onclick="location.href='{% url 'info_create' %}'" class ="create_profile"> Renew Profile </button>
+
+{% endblock %}
